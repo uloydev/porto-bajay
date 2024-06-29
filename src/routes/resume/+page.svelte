@@ -5,9 +5,6 @@
     let navbarMode: Writable<string> = getContext('navbarMode');
     onMount(() => {
         navbarMode.set('dark');
-        setInterval(() => {
-            console.log('navbarMode from resume page: ', $navbarMode);
-        }, 3000);
     });
 </script>
 

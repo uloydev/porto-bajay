@@ -38,12 +38,6 @@
 			songPlaying = true;
 		}
 	};
-
-    onMount(() => {
-        setInterval(() => {
-            console.log('navbarMode from navbar: ', $navbarMode);
-        }, 3000);
-    });
 </script>
 
 <!-- navbar -->
