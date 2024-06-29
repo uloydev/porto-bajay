@@ -8,7 +8,7 @@
     });
 </script>
 
-<div class="bg-white w-full h-full pt-24 font-familjen">
+<div class="bg-white w-full h-full pt-40 font-familjen">
     <div class="grid grid-cols-12 px-32">
         <div class="col-span-4">
             <div class="mb-20">
