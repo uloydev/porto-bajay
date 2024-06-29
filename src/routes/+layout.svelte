@@ -1,53 +1,50 @@
 <script>
-	import Header from './Header.svelte';
-	import './styles.css';
+	import '../app.css';
+
+	import Logo from '$lib/images/components/svg-icon/Logo.svelte';
+	import { onMount, setContext } from 'svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import {page} from '$app/stores';
+	import { writable } from 'svelte/store';
+
+	// stores
+	const navbarMode = writable();
+	navbarMode.set('light');
+	setContext('navbarMode', navbarMode);
+
+	let finishLoading = false;
+	// let showHome = false;
+	let hideLoading = false;
+	let LoadingAnimation = 'animate-loading';
+
+	// change animation when finish loading
+	$: LoadingAnimation = finishLoading ? 'animate-finish-loading' : 'animate-loading';
+	$: showContentClass = finishLoading ? 'opacity-100' : 'opacity-0';
+	$: path = $page.url.pathname;
+
+	onMount(() => {
+		setTimeout(() => {
+			finishLoading = true;
+			setTimeout(() => {
+				hideLoading = true;
+			}, 1000);
+		}, 2000);
+		console.log(path);
+	});
 </script>
 
-<div class="app">
-	<Header />
-
+<div class="app font-sans">
 	<main>
-		<slot />
+		<!-- loading screen -->
+		<div
+			class="h-screen w-screen flex justify-center items-center overflow-hidden absolute -z-10"
+			class:hidden={hideLoading}
+		>
+			<Logo className="w-[100px] h-[100px] transition-all absolute {LoadingAnimation}" />
+		</div>
+		<Navbar show={finishLoading} path={path}/>
+		<div class="h-screen w-screen transition-all duration-1000 {showContentClass}">
+			<slot></slot>
+		</div>
 	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
 </div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
