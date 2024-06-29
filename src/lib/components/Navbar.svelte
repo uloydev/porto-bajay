@@ -81,16 +81,16 @@
 	<div class="font-familjen">
 		<ul class="flex items-center font-normal tracking-wider gap-8 uppercase {textColor}">
 			<li
-				class="relative cursor-pointer hover:border-b-2 hover: {borderColor}"
+				class="relative cursor-pointer hover:border-b-2 hover:{borderColor}"
 				class:active={path == '/resume'}
 			>
 				<a href="/resume">Resume</a>
 			</li>
 			<li
-				class="cursor-pointer hover:border-b-2 hover: {borderColor}"
+				class="relative cursor-pointer hover:border-b-2 hover:{borderColor}"
 				class:active={path == '/works'}
 			>
-				Works
+                <a href="/works">Works</a>
 			</li>
 			<li
 				class="cursor-pointer rounded-full px-4 py-1 {borderColor} border flex items-center gap-2 transition-colors duration-500 hover:bg-thejak"
