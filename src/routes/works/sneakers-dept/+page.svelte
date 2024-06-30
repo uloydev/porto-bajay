@@ -147,9 +147,13 @@
 					</div>
 				</div>
 				<div class="col-span-7 h-screen p-4 relative">
-					<div class="absolute left-0 w-full h-40 top-0 bg-gradient-to-b from-[#202020] to-transparent"></div>
-                    <div class="absolute left-0 w-full h-40 bottom-20 bg-gradient-to-t from-[#202020] to-transparent"></div>
-                    <div class="w-full h-full grid grid-cols-2 gap-4 overflow-y-auto">
+					<div
+						class="absolute left-0 w-full h-40 top-0 bg-gradient-to-b from-[#202020] to-transparent"
+					></div>
+					<div
+						class="absolute left-0 w-full h-40 bottom-20 bg-gradient-to-t from-[#202020] to-transparent"
+					></div>
+					<div class="w-full h-full grid grid-cols-2 gap-4 overflow-y-auto">
 						{#each postsRaw as post, i}
 							<img class="object-cover aspect-square" src={post} alt="post ig raw {i}" />
 						{/each}
@@ -158,14 +162,19 @@
 			</div>
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div class="flex-shrink-0 snap-end h-screen relative" on:mouseenter={() => setNavbarMode('light')}>
-            <div class="flex justify-between w-screen px-20 sticky top-[calc(100vh-8rem)] text-white left-0 h-0">
-                <p class="text-6xl">2021</p>
-                <p class="leading-none text-3xl">
-                    biggest sneakers<br />
-                    seller in tokopedia
-                </p>
-            </div>
+		<div
+			class="flex-shrink-0 snap-end h-screen relative"
+			on:mouseenter={() => setNavbarMode('light')}
+		>
+			<div
+				class="flex justify-between w-screen px-20 sticky top-[calc(100vh-8rem)] text-white left-0 h-0"
+			>
+				<p class="text-6xl">2021</p>
+				<p class="leading-none text-3xl">
+					biggest sneakers<br />
+					seller in tokopedia
+				</p>
+			</div>
 			<div class="h-screen overflow-x-auto">
 				<img class="h-full w-full" src={posterSneakersDept} alt="poster-sneakers-dept" />
 			</div>
