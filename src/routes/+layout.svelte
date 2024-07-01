@@ -1,10 +1,10 @@
 <script>
 	import '../app.css';
 
-	import Logo from '$lib/images/components/svg-icon/Logo.svelte';
+	import Logo from '$lib/images/components/Logo.svelte';
 	import { onMount, setContext } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import {page} from '$app/stores';
+	import { page } from '$app/stores';
 	import { writable } from 'svelte/store';
 
 	// stores
@@ -42,7 +42,7 @@
 		>
 			<Logo className="w-[100px] h-[100px] transition-all absolute {LoadingAnimation}" />
 		</div>
-		<Navbar show={finishLoading} path={path}/>
+		<Navbar show={finishLoading} {path} />
 		<div class="h-screen w-screen transition-all duration-1000 {showContentClass}">
 			<slot></slot>
 		</div>

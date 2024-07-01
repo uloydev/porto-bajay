@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Icon from 'svelte-boxicons';
-	import Logo from '$lib/images/components/svg-icon/Logo.svelte';
+	import Logo from '$lib/images/components/Logo.svelte';
 	import song from '$lib/audio/song.m4a';
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';

@@ -12,19 +12,19 @@ export default {
       keyframes: {
         // rotate and scale
         loading: {
-          '0%': { transform: 'rotate(0deg)', scale: '0.5', 'fill': '#000'},
-          '25%': { transform: 'rotate(-180deg)', scale: '.8', 'fill': '#FB4343'},
-          '35%': { transform: 'rotate(-180deg)', scale: '.8', 'fill': '#FB4343'},
+          '0%': { transform: 'rotate(0deg)', scale: '0.5', 'fill': '#000' },
+          '25%': { transform: 'rotate(-180deg)', scale: '.8', 'fill': '#FB4343' },
+          '35%': { transform: 'rotate(-180deg)', scale: '.8', 'fill': '#FB4343' },
           '60%': { transform: 'rotate(-360deg)', scale: '0.5', 'fill': '#000' },
-          '100%': { transform: 'rotate(-360deg)', scale: '0.5', 'fill': '#000'},
+          '100%': { transform: 'rotate(-360deg)', scale: '0.5', 'fill': '#000' },
         },
         'finish-loading': {
-          '0%': { 'fill': '#000', opacity: '1'},
-          '100%': { 'fill': '#000', 'opacity': '0', width: '1000%', height: '1000%'},
+          '0%': { 'fill': '#000', opacity: '1' },
+          '100%': { 'fill': '#000', 'opacity': '0', width: '1000%', height: '1000%' },
         },
         'fade-in': {
-          '0%': { opacity: '0'},
-          '100%': { opacity: '1'},
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
       },
       animation: {
