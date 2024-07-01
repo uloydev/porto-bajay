@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, onMount, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
 
 	// images
@@ -25,10 +25,7 @@
 </script>
 
 <div class="overflow-hidden">
-	<div
-		class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory"
-		id="hoppsDept"
-	>
+	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="flex-shrink-0 snap-start w-screen h-screen bg-black text-white"
@@ -53,28 +50,28 @@
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg1} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg1} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg2} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg2} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg3} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg3} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg4} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg4} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
@@ -100,21 +97,21 @@
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
-			<img class="object-cover w-full h-full" src={bg5} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg5} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg6} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg6} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg7} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg7} alt="others bg" />
 		</div>
 
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -141,20 +138,20 @@
 			<img
 				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2"
 				src={tokopedia}
-				alt="logo hopps dept"
+				alt="tokopedia logo"
 			/>
 		</div>
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-        class="relative flex-shrink-0 snap-start w-screen h-screen bg-white"
-        on:mouseenter={() => setNavbarMode('dark')}
-    >
-        <img
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5"
-            src={phoneTokopedia}
-            alt="logo hopps dept"
-        />
-    </div>
+			class="relative flex-shrink-0 snap-start w-screen h-screen bg-white"
+			on:mouseenter={() => setNavbarMode('dark')}
+		>
+			<img
+				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5"
+				src={phoneTokopedia}
+				alt="tokopedia images"
+			/>
+		</div>
 	</div>
 	<!-- #42B549 -->
 

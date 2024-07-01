@@ -7,7 +7,7 @@
 	import bg2 from '$lib/images/basketboard/bg-2.png';
 	import bg3 from '$lib/images/basketboard/bg-3.png';
 	import bg4 from '$lib/images/basketboard/bg-4.png';
-    import bg5 from '$lib/images/basketboard/bg-5.png';
+	import bg5 from '$lib/images/basketboard/bg-5.png';
 	import posts from '$lib/images/basketboard/posts.png';
 	import longPosts from '$lib/images/basketboard/long-posts.png';
 	import phone1 from '$lib/images/basketboard/phone-1.png';
@@ -35,16 +35,13 @@
 </script>
 
 <div class="overflow-hidden">
-	<div
-		class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory"
-		id="hoppsDept"
-	>
+	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
-			<img class="object-cover w-full h-full" src={bg1} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg1} alt="basketboard bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
@@ -70,14 +67,14 @@
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-fill w-full h-full" src={bg2} alt="hopps dept bg" />
+			<img class="object-fill w-full h-full" src={bg2} alt="basketboard bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start h-screen max-w-[100vw] bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
-			<img class=" absolute object-cover w-full h-full -z-10" src={bg3} alt="hopps dept bg 2" />
+			<img class=" absolute object-cover w-full h-full -z-10" src={bg3} alt="basketboard bg 2" />
 			<div class="grid-cols-9 grid gap-2 h-full py-20 relative">
 				<div class="col-span-3 bg-transparent h-full w-full pt-4">
 					{#each phoneScreens as phone, i}
@@ -101,18 +98,18 @@
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg4} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg4} alt="basketboard bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="object-cover w-full h-full" src={bg5} alt="hopps dept bg" />
+			<img class="object-cover w-full h-full" src={bg5} alt="basketboard bg" />
 			<img
 				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 opacity-100"
 				src={posts}
-				alt="logo hopps dept"
+				alt="logo basketboard"
 			/>
 		</div>
 	</div>

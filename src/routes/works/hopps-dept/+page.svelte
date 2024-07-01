@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { getContext, onMount, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
+
+	// images
 	import logoHoppsDept from '$lib/images/hopps-dept/logo.png';
 	import bgHoppsDept from '$lib/images/hopps-dept/bg.png';
 	import posterHoppsDept from '$lib/images/hopps-dept/poster.png';
@@ -13,30 +15,22 @@
 	let navbarMode: Writable<string> = getContext('navbarMode');
 	let phoneScreens = [phone1, phone2, phone3];
 	let currentPhoneScreen = 0;
-    let intervals: number[] = [];
 
 	onMount(() => {
 		navbarMode.set('light');
-        intervals.push(setInterval(() => {
-            currentPhoneScreen =
-                currentPhoneScreen === phoneScreens.length - 1 ? 0 : currentPhoneScreen + 1;
-        }, 1000));
+		setInterval(() => {
+			currentPhoneScreen =
+				currentPhoneScreen === phoneScreens.length - 1 ? 0 : currentPhoneScreen + 1;
+		}, 1000);
 	});
 
 	const setNavbarMode = (mode: string) => {
 		navbarMode.set(mode);
 	};
-
-    onDestroy(() => {
-        intervals.forEach(interval => clearInterval(interval));
-    });
 </script>
 
 <div class="overflow-hidden">
-	<div
-		class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory"
-		id="hoppsDept"
-	>
+	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
@@ -74,20 +68,24 @@
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
-			<img class="w-full h-full object-fill aspect-video" src={posterHoppsDept} alt="hopps dept bg" />
-            <p class="absolute bottom-20 leading-none text-right w-full px-20 text-3xl text-white">
-                hoops<br>department
-            </p>
+			<img
+				class="w-full h-full object-fill aspect-video"
+				src={posterHoppsDept}
+				alt="hopps dept bg"
+			/>
+			<p class="absolute bottom-20 leading-none text-right w-full px-20 text-3xl text-white">
+				hoops<br />department
+			</p>
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start h-screen max-w-[100vw] bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
-            <p class="absolute right-0 top-1/2 -translate-y-1/2 leading-none text-3xl rotate-90">
-            designed by<br>
-            aji fandhi fatahillah
-            </p>
+			<p class="absolute right-0 top-1/2 -translate-y-1/2 leading-none text-3xl rotate-90">
+				designed by<br />
+				aji fandhi fatahillah
+			</p>
 			<img
 				class=" absolute object-cover w-full h-full -z-10"
 				src={bg2HoppsDept}
@@ -100,9 +98,14 @@
 					</div>
 				</div>
 				<div class="col-start-7 col-span-3 bg-transparent h-full w-full">
-                    {#each phoneScreens as phone, i}
-					    <img src={phone} alt="phone screen {i}" class="h-[870px] object-cover -ml-10 pt-4" class:hidden={i != currentPhoneScreen} />
-                    {/each}
+					{#each phoneScreens as phone, i}
+						<img
+							src={phone}
+							alt="phone screen {i}"
+							class="h-[870px] object-cover -ml-10 pt-4"
+							class:hidden={i != currentPhoneScreen}
+						/>
+					{/each}
 				</div>
 			</div>
 		</div>

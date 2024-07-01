@@ -7,7 +7,7 @@
 	import phoneSlider2 from '$lib/images/phone-slider-2.png';
 	import phoneSlider3 from '$lib/images/phone-slider-3.png';
 
-	// posts
+	// images
 	import post1 from '$lib/images/ig-posts/post-1.png';
 	import post2 from '$lib/images/ig-posts/post-2.png';
 	import post3 from '$lib/images/ig-posts/post-3.png';
@@ -22,7 +22,6 @@
 	import postRaw8 from '$lib/images/ig-posts/post-raw-8.png';
 	import postRaw9 from '$lib/images/ig-posts/post-raw-9.png';
 	import postRaw10 from '$lib/images/ig-posts/post-raw-10.png';
-
 	import posterSneakersDept from '$lib/images/poster-sneakers-dept.png';
 
 	let posts = [post1, post2, post3, post4];
@@ -40,9 +39,10 @@
 	];
 	let currentPostSlider = 0;
 
-	let navbarMode: Writable<string> = getContext('navbarMode');
 	let phoneSlider = [phoneSlider1, phoneSlider2, phoneSlider3];
 	let currentPhoneSlider = 0;
+
+	let navbarMode: Writable<string> = getContext('navbarMode');
 
 	onMount(() => {
 		navbarMode.set('light');
@@ -61,10 +61,7 @@
 </script>
 
 <div class="overflow-hidden">
-	<div
-		class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory"
-		id="sneakersDept"
-	>
+	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"

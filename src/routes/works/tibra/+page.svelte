@@ -32,7 +32,6 @@
 <div class="overflow-hidden">
 	<div
 		class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory"
-		id="sneakersDept"
 	>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
@@ -42,7 +41,7 @@
 			<img
 				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] opacity-100"
 				src={logo}
-				alt="logo sneakers dept"
+				alt="logo tibra"
 			/>
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -69,7 +68,7 @@
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
-			<img class="object-cover w-full h-full" src={posts} alt="sneakers dept bg" />
+			<img class="object-cover w-full h-full" src={posts} alt="tibra bg" />
 		</div>
         <!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
@@ -84,7 +83,7 @@
         <div class="h-full pt-20 relative">
             <div class="h-full pt-10 overflow-x-scroll">
                 <div class="h-full w-[2500px]">
-                    <img src={longPosts} alt="hoops dept post feeds" class=" object-cover h-full" />
+                    <img src={longPosts} alt="tibra post feeds" class=" object-cover h-full" />
                 </div>
             </div>
             <div class="absolute left-1/2 bottom-0 -translate-x-1/2 bg-transparent h-[90%]">
