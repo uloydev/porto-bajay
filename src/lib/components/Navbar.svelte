@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as Icon from 'svelte-boxicons';
 	import Logo from '$lib/images/components/svg-icon/Logo.svelte';
-	import song from '$lib/audio/song.mp3';
-	import { getContext, onMount } from 'svelte';
+	import song from '$lib/audio/song.m4a';
+	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
 
 	export let show = false;
@@ -45,7 +45,7 @@
 	class="w-full h-[75px] fixed top-0 left-0 flex justify-between items-center px-20 transition-all z-50"
 	class:hidden={!show}
 >
-	<audio id="audio" src={song} class="hidden" autoplay></audio>
+	<audio id="audio" src={song} class="hidden" autoplay loop></audio>
 
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="cursor-pointer flex items-center tracking-wider" on:mouseleave={onLogoLeave}>
@@ -71,7 +71,7 @@
 				</span>
 				<div class="inline-block ml-2 text-start">
 					<p class="font-normal text-lg -mb-2">BOB MARLEY</p>
-					<p>THREE LITLE BIRDS</p>
+					<p>JAMMING</p>
 				</div>
 			</button>
 		</div>
@@ -81,19 +81,19 @@
 	<div class="font-familjen">
 		<ul class="flex items-center font-normal tracking-wider gap-8 uppercase {textColor}">
 			<li
-				class="relative cursor-pointer hover:border-b-2 hover:{borderColor}"
+				class="relative cursor-pointer hover:font-bold hover:border-b-2 hover:{borderColor}"
 				class:active={path == '/resume'}
 			>
 				<a href="/resume">Resume</a>
 			</li>
 			<li
-				class="relative cursor-pointer hover:border-b-2 hover:{borderColor}"
+				class="relative cursor-pointer hover:font-bold hover:border-b-2 hover:{borderColor}"
 				class:active={path == '/works'}
 			>
                 <a href="/works">Works</a>
 			</li>
 			<li
-				class="cursor-pointer rounded-full px-4 py-1 {borderColor} border flex items-center gap-2 transition-colors duration-500 hover:bg-thejak"
+				class="cursor-pointer hover:font-bold rounded-full px-4 py-1 {borderColor} border flex items-center gap-2 transition-colors duration-500 hover:bg-thejak"
 			>
 				CONTACT ME
 				<svg
