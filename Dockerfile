@@ -1,25 +1,27 @@
-# Stage 1: Build the application
-FROM node:20-alpine AS build
+FROM node:20-alpine AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY package*.json .
+COPY pnpm-lock.yaml .
 
-# Install dependencies
-RUN npm install -g pnpm
-RUN pnpm i --prod
-RUN pnpm add vite
+RUN npm i -g pnpm vite
+RUN pnpm install
 
-# Copy the rest of the application code
 COPY . .
 
-# Build the SvelteKit application
-RUN pnpm build
+RUN pnpm run build
+RUN pnpm prune --prod
 
-# Expose the port the app runs on
+FROM node:20-alpine AS deployer
+
+WORKDIR /app
+
+COPY --from=builder /app/build build/
+COPY --from=builder /app/package.json .
+
 EXPOSE 3000
 
-# Command to run the app
-CMD ["pnpm", "start"]
+ENV NODE_ENV=production
+
+CMD [ "node", "build" ]
