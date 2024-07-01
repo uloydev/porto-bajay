@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import Logo from '$lib/images/components/Logo.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 	import WorksLink from '$lib/components/WorksLink.svelte';
 
 	let navbarMode: Writable<string> = getContext('navbarMode');

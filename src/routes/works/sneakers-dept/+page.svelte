@@ -1,28 +1,28 @@
 <script lang="ts">
 	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import sneakersDept1 from '$lib/images/sneakers-dept-1.png';
-	import logoSneakersDept from '$lib/images/logo-sneakers-dept.png';
-	import phoneSlider1 from '$lib/images/phone-slider-1.png';
-	import phoneSlider2 from '$lib/images/phone-slider-2.png';
-	import phoneSlider3 from '$lib/images/phone-slider-3.png';
+	import sneakersDept1 from '$lib/images/sneakers-dept/sneakers-dept-1.png';
+	import logoSneakersDept from '$lib/images/sneakers-dept/logo-sneakers-dept.png';
+	import phoneSlider1 from '$lib/images/sneakers-dept/phone-slider-1.png';
+	import phoneSlider2 from '$lib/images/sneakers-dept/phone-slider-2.png';
+	import phoneSlider3 from '$lib/images/sneakers-dept/phone-slider-3.png';
 
 	// images
-	import post1 from '$lib/images/ig-posts/post-1.png';
-	import post2 from '$lib/images/ig-posts/post-2.png';
-	import post3 from '$lib/images/ig-posts/post-3.png';
-	import post4 from '$lib/images/ig-posts/post-4.png';
-	import postRaw1 from '$lib/images/ig-posts/post-raw-1.png';
-	import postRaw2 from '$lib/images/ig-posts/post-raw-2.png';
-	import postRaw3 from '$lib/images/ig-posts/post-raw-3.png';
-	import postRaw4 from '$lib/images/ig-posts/post-raw-4.png';
-	import postRaw5 from '$lib/images/ig-posts/post-raw-5.png';
-	import postRaw6 from '$lib/images/ig-posts/post-raw-6.png';
-	import postRaw7 from '$lib/images/ig-posts/post-raw-7.png';
-	import postRaw8 from '$lib/images/ig-posts/post-raw-8.png';
-	import postRaw9 from '$lib/images/ig-posts/post-raw-9.png';
-	import postRaw10 from '$lib/images/ig-posts/post-raw-10.png';
-	import posterSneakersDept from '$lib/images/poster-sneakers-dept.png';
+	import post1 from '$lib/images/sneakers-dept/ig-posts/post-1.png';
+	import post2 from '$lib/images/sneakers-dept/ig-posts/post-2.png';
+	import post3 from '$lib/images/sneakers-dept/ig-posts/post-3.png';
+	import post4 from '$lib/images/sneakers-dept/ig-posts/post-4.png';
+	import postRaw1 from '$lib/images/sneakers-dept/ig-posts/post-raw-1.png';
+	import postRaw2 from '$lib/images/sneakers-dept/ig-posts/post-raw-2.png';
+	import postRaw3 from '$lib/images/sneakers-dept/ig-posts/post-raw-3.png';
+	import postRaw4 from '$lib/images/sneakers-dept/ig-posts/post-raw-4.png';
+	import postRaw5 from '$lib/images/sneakers-dept/ig-posts/post-raw-5.png';
+	import postRaw6 from '$lib/images/sneakers-dept/ig-posts/post-raw-6.png';
+	import postRaw7 from '$lib/images/sneakers-dept/ig-posts/post-raw-7.png';
+	import postRaw8 from '$lib/images/sneakers-dept/ig-posts/post-raw-8.png';
+	import postRaw9 from '$lib/images/sneakers-dept/ig-posts/post-raw-9.png';
+	import postRaw10 from '$lib/images/sneakers-dept/ig-posts/post-raw-10.png';
+	import posterSneakersDept from '$lib/images/sneakers-dept/poster-sneakers-dept.png';
 
 	let posts = [post1, post2, post3, post4];
 	let postsRaw = [

@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 
-	import Logo from '$lib/images/components/Logo.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 	import { onMount, setContext } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import { page } from '$app/stores';
