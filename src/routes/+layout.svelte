@@ -7,13 +7,15 @@
 	import { page } from '$app/stores';
 	import { writable } from 'svelte/store';
 
+	
 	// stores
 	const navbarMode = writable();
 	navbarMode.set('light');
 	setContext('navbarMode', navbarMode);
-
+	
+	let isPhone = false;
+	let showDialog = false;
 	let finishLoading = false;
-	// let showHome = false;
 	let hideLoading = false;
 	let LoadingAnimation = 'animate-loading';
 
@@ -29,7 +31,13 @@
 				hideLoading = true;
 			}, 1000);
 		}, 2000);
-		console.log(path);
+
+		// Check if the user is on a phone
+		const userAgent = navigator.userAgent;
+		isPhone = /android|iphone|ipad|ipod/i.test(userAgent);
+		if (isPhone) {
+			showDialog = true;
+		}
 	});
 </script>
 
@@ -42,9 +50,19 @@
 		>
 			<Logo className="w-[100px] h-[100px] transition-all absolute {LoadingAnimation}" />
 		</div>
-		<Navbar show={finishLoading} {path} />
+		{#if !showDialog}
+			<Navbar show={finishLoading} {path} />
+		{/if}
 		<div class="h-screen w-screen transition-all duration-1000 {showContentClass}">
-			<slot></slot>
+			{#if showDialog}
+				<div class="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex justify-center items-center px-4">
+					<div class="bg-thejak p-8 rounded-lg flex items-center">
+						<p class="text-center text-3xl text-white">This website is not optimized for mobile. Please use a desktop browser for the best experience.</p>
+					</div>
+				</div>
+			{:else}
+				<slot></slot>
+			{/if}
 		</div>
 	</main>
 </div>
