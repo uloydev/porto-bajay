@@ -23,6 +23,7 @@
 	import postRaw9 from '$lib/images/sneakers-dept/ig-posts/post-raw-9.png';
 	import postRaw10 from '$lib/images/sneakers-dept/ig-posts/post-raw-10.png';
 	import posterSneakersDept from '$lib/images/sneakers-dept/poster-sneakers-dept.png';
+	import SlideNumber from '$lib/components/SlideNumber.svelte';
 
 	let posts = [post1, post2, post3, post4];
 	let postsRaw = [
@@ -70,37 +71,25 @@
 			<img class="object-cover w-full h-full" src={sneakersDept1} alt="sneakers dept bg" />
 			<div class="absolute top-0 h-full w-full bg-black opacity-40"></div>
 			<img
-				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] opacity-100"
+				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[15vw] opacity-100"
 				src={logoSneakersDept}
 				alt="logo sneakers dept"
 			/>
 		</div>
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div
-			class="flex-shrink-0 snap-start w-screen h-screen bg-thejak"
-			on:mouseenter={() => setNavbarMode('dark')}
-		>
-			<div class="flex flex-col h-full justify-between pt-24 px-20 pb-16">
-				<div class="flex justify-between items-end">
-					<p class="text-2xl leading-none">
-						2021 - present<br />
-						graphic designer
-					</p>
-					<p class="text-9xl">001</p>
-				</div>
-				<p class="text-[150px] leading-none">
-					digital imaging<br />
-					social media design
-				</p>
-			</div>
-		</div>
+		<SlideNumber 
+			navbar="dark" 
+			number="001" 
+			workDate="2021 - present<br/>graphic designer"
+			workRole="digital imaging<br/>social media design"
+			containerClass="bg-thejak"
+			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-[#d9d9d9]"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
-			<div class="flex flex-col h-full justify-center pt-24 px-20 pb-16">
-				<p class="text-[350px] text-center">sneakers dept</p>
+			<div class="flex flex-col h-full justify-center pt-[6vh] px-[5vw] pb-16">
+				<p class="text-[18vw] text-center">sneakers dept</p>
 			</div>
 			{#each phoneSlider as phone, index}
 				<img
@@ -126,13 +115,13 @@
 		>
 			<div class="w-full h-full px-16 pt-20 grid grid-cols-10">
 				<div class="relative col-span-3 h-full pl-8 font-familjen text-white overflow-visible">
-					<h1 class="text-2xl font-bold">Sneakersdept - 2021</h1>
-					<p class="leading-none">
+					<h1 class="text-[1.5vw] font-bold">Sneakersdept - 2021</h1>
+					<p class="leading-none text-[1vw]">
 						it is currently the largest sneakers retailer on Tokopedia,<br />
 						with striking visuals and promotions that set it apart<br />
 						from other sneakers store.
 					</p>
-					<div class="absolute block w-[150%] -left-20 -bottom-40 z-20">
+					<div class="absolute block w-[150%] -left-20 -bottom-[10vh] z-20">
 						{#each posts as post, i}
 							<img
 								class="object-cover"
@@ -166,8 +155,8 @@
 			<div
 				class="flex justify-between w-screen px-20 sticky top-[calc(100vh-8rem)] text-white left-0 h-0"
 			>
-				<p class="text-6xl">2021</p>
-				<p class="leading-none text-3xl">
+				<p class="text-[3.75vw]">2021</p>
+				<p class="leading-none text-[1.875vw]">
 					biggest sneakers<br />
 					seller in tokopedia
 				</p>
@@ -180,7 +169,7 @@
 
 	<!-- footer -->
 	<div
-		class="absolute z-50 bottom-8 text-center uppercase w-full font-familjen {$navbarMode == 'light'
+		class="absolute z-50 bottom-8 text-center uppercase w-full font-familjen text-[1vw]  {$navbarMode == 'light'
 			? 'text-white'
 			: 'text-black'}"
 	>

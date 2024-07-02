@@ -51,11 +51,11 @@
 </div>
 
 <div class="absolute h-full w-full top-0 left-0 z-10 overflow-hidden">
-	<h1 class="text-[560px] text-center text-white -mt-20 max-w-full">portfolio</h1>
+	<h1 class="text-[30vw] text-center text-white -mt-20 max-w-full">portfolio</h1>
 	<div class="flex justify-center -mt-32">
 		<a
 			href="/works"
-			class="uppercase border border-white rounded-full relative text-white px-8 py-2 font-familjen text-2xl flex items-center hover:bg-thejak transition-colors duration-500"
+			class="uppercase border border-white rounded-full relative text-white px-8 py-2 font-familjen text-[1vw] flex items-center hover:bg-thejak transition-colors duration-500"
 		>
 			Let's start
 			<svg
@@ -84,7 +84,7 @@
 		</a>
 	</div>
 	<div
-		class="grid grid-cols-3 justify-between font-familjen uppercase text-white px-20 font-normal text-lg mt-36"
+		class="grid grid-cols-3 justify-between font-familjen uppercase text-white px-20 font-normal text-[1vw] mt-36"
 	>
 		<div>
 			<p>my name is <strong>Aji Fandhi Fatahillah</strong></p>

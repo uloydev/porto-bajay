@@ -17,7 +17,7 @@
 	/>
 
 	<div
-		class="absolute w-full h-full grid grid-rows-12 px-20 uppercase text-[160px] leading-none z-[2]"
+		class="absolute w-full h-full grid grid-rows-12 px-20 uppercase text-[10vw] leading-none z-[2]"
 	>
 		<WorksLink
 			href="/works/sneakers-dept"
@@ -32,7 +32,7 @@
 	</div>
 
 	<!-- footer -->
-	<p class="z-[2] absolute bottom-8 text-center uppercase w-full font-familjen">
+	<p class="z-[2] absolute bottom-8 text-center uppercase w-full font-familjen text-[1vw]">
 		this user interface also designed by <strong>ME.</strong>
 		<span class="absolute right-20">&copy;2024</span>
 	</p>

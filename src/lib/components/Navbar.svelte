@@ -2,21 +2,20 @@
 	import * as Icon from 'svelte-boxicons';
 	import Logo from '$lib/components/Logo.svelte';
 	import song from '$lib/audio/song.m4a';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
 
 	export let show = false;
 	export let path = '';
 
-    let navbarMode: Writable<string> = getContext('navbarMode');
+	let navbarMode: Writable<string> = getContext('navbarMode');
 
-    $: textColor = $navbarMode === 'dark' ? 'text-black' : 'text-white';
-    $: borderColor = $navbarMode === 'dark' ? 'border-black' : 'border-white';
-    $: logoColor = $navbarMode === 'dark' ? 'fill-black' : 'fill-white';
-    $: iconColor = $navbarMode === 'dark' ? 'black' : 'white';
+	$: textColor = $navbarMode === 'dark' ? 'text-black' : 'text-white';
+	$: borderColor = $navbarMode === 'dark' ? 'border-black' : 'border-white';
+	$: logoColor = $navbarMode === 'dark' ? 'fill-black' : 'fill-white';
+	$: iconColor = $navbarMode === 'dark' ? 'black' : 'white';
 
-
-	let songPlaying = true;
+	let songPlaying = false;
 
 	const onLogoHover = () => {
 		const audioControl = document.getElementById('audioControl') as HTMLDivElement;
@@ -38,6 +37,11 @@
 			songPlaying = true;
 		}
 	};
+
+	onMount(() => {
+		const audio = document.getElementById('audio') as HTMLAudioElement;
+		audio.play();
+	});
 </script>
 
 <!-- navbar -->
@@ -90,35 +94,37 @@
 				class="relative cursor-pointer hover:font-bold hover:border-b-2 hover:{borderColor}"
 				class:active={path == '/works'}
 			>
-                <a href="/works">Works</a>
+				<a href="/works">Works</a>
 			</li>
 			<li
-				class="cursor-pointer hover:font-bold rounded-full px-4 py-1 {borderColor} border flex items-center gap-2 transition-colors duration-500 hover:bg-thejak"
+				class="cursor-pointer hover:font-bold rounded-full px-4 py-1 {borderColor} border transition-colors duration-500 hover:bg-thejak"
 			>
-				CONTACT ME
-				<svg
-					class="{logoColor} inline w-3 h-3"
-					viewBox="0 0 13 13"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<rect x="11.3452" y="1" width="1" height="10.8896" stroke-width="0.5" />
-					<rect
-						x="11.8896"
-						y="1"
-						width="1"
-						height="10.8896"
-						transform="rotate(90 11.8896 1)"
-						stroke-width="0.5"
-					/>
-					<rect
-						x="11.395"
-						y="1"
-						width="1"
-						height="14.701"
-						transform="rotate(45 11.395 1)"
-						stroke-width="0.5"
-					/>
-				</svg>
+				<a href="https://wa.me/6285776696569?text=Hi%20Aji,%20I'm%20interested%20with%20your%20profile,%20can%20we%20talk?" class="flex items-center gap-2" target="_blank">
+					CONTACT ME
+					<svg
+						class="{logoColor} inline w-3 h-3"
+						viewBox="0 0 13 13"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect x="11.3452" y="1" width="1" height="10.8896" stroke-width="0.5" />
+						<rect
+							x="11.8896"
+							y="1"
+							width="1"
+							height="10.8896"
+							transform="rotate(90 11.8896 1)"
+							stroke-width="0.5"
+						/>
+						<rect
+							x="11.395"
+							y="1"
+							width="1"
+							height="14.701"
+							transform="rotate(45 11.395 1)"
+							stroke-width="0.5"
+						/>
+					</svg>
+				</a>
 			</li>
 		</ul>
 	</div>

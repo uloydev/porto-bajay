@@ -14,9 +14,10 @@
 	import phone2 from '$lib/images/basketboard/phone-2.png';
 	import phone3 from '$lib/images/basketboard/phone-3.png';
 	import phone4 from '$lib/images/basketboard/phone-4.png';
-	import phone5 from '$lib/images/basketboard/phone-5.png';
+	// import phone5 from '$lib/images/basketboard/phone-5.png';
+	import SlideNumber from '$lib/components/SlideNumber.svelte';
 
-	let phoneScreens = [phone1, phone2, phone3, phone4, phone5];
+	let phoneScreens = [phone1, phone2, phone3, phone4];
 	let currentPhoneScreen = 0;
 
 	let navbarMode: Writable<string> = getContext('navbarMode');
@@ -43,25 +44,13 @@
 		>
 			<img class="object-cover w-full h-full" src={bg1} alt="basketboard bg" />
 		</div>
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div
-			class="flex-shrink-0 snap-start w-screen h-screen bg-black text-white"
-			on:mouseenter={() => setNavbarMode('light')}
-		>
-			<div class="flex flex-col h-full justify-between pt-24 px-20 pb-16">
-				<div class="flex justify-between items-end">
-					<p class="text-2xl leading-none">
-						2023 - present<br />
-						graphic designer
-					</p>
-					<p class="text-9xl">004</p>
-				</div>
-				<p class="text-[150px] leading-none">
-					social media design<br />
-					event key visual
-				</p>
-			</div>
-		</div>
+		<SlideNumber 
+			navbar="light" 
+			number="004" 
+			workDate="2023 - present<br/>graphic designer"
+			workRole="social media design<br/>event key visual"
+			containerClass="bg-black text-white"
+			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
@@ -75,20 +64,20 @@
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<img class=" absolute object-cover w-full h-full -z-10" src={bg3} alt="basketboard bg 2" />
-			<div class="grid-cols-9 grid gap-2 h-full py-20 relative">
-				<div class="col-span-3 bg-transparent h-full w-full pt-4">
+			<div class="grid-cols-9 grid gap-2 h-full py-[5vw]">
+				<div class="col-span-3 bg-transparent h-full w-full pt-[1vh] -mr-[5vw]">
 					{#each phoneScreens as phone, i}
 						<img
 							src={phone}
 							alt="phone screen {i}"
-							class="h-[850px] object-cover"
+							class="h-[90%] object-cover"
 							class:hidden={i != currentPhoneScreen}
 						/>
 					{/each}
 				</div>
-				<div class="col-span-6 h-full pt-10 overflow-x-scroll -ml-20">
-					<div class="h-full w-[1750px]">
-						<img src={longPosts} alt="hoops dept post feeds" class=" object-cover h-full" />
+				<div class="col-span-6 h-full overflow-x-scroll">
+					<div class="h-full w-[100vw]">
+						<img src={longPosts} alt="hoops dept post feeds" class=" object-cover h-[90%]" />
 					</div>
 				</div>
 			</div>
@@ -116,7 +105,7 @@
 
 	<!-- footer -->
 	<div
-		class="absolute z-50 bottom-8 text-center uppercase w-full font-familjen {$navbarMode == 'light'
+		class="absolute z-50 bottom-8 text-center uppercase w-full font-familjen text-[1vw] {$navbarMode == 'light'
 			? 'text-white'
 			: 'text-black'}"
 	>
