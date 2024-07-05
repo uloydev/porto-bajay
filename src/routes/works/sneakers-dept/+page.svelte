@@ -24,6 +24,7 @@
 	import postRaw10 from '$lib/images/sneakers-dept/ig-posts/post-raw-10.png';
 	import posterSneakersDept from '$lib/images/sneakers-dept/poster-sneakers-dept.png';
 	import SlideNumber from '$lib/components/SlideNumber.svelte';
+	import { DragScrollHandler, HorizontalScrollHandler } from '$lib/utils/scroll';
 
 	let posts = [post1, post2, post3, post4];
 	let postsRaw = [
@@ -44,6 +45,12 @@
 	let currentPhoneSlider = 0;
 
 	let navbarMode: Writable<string> = getContext('navbarMode');
+	let scrollContainer: HTMLElement;
+	let horizontalScroll: HorizontalScrollHandler;
+	let postScrollContainer: HTMLElement;
+	let postDragScroll: DragScrollHandler;
+	let posterScrollContainer: HTMLElement;
+	let posterDragScroll: DragScrollHandler;
 
 	onMount(() => {
 		navbarMode.set('light');
@@ -51,9 +58,10 @@
 			currentPhoneSlider =
 				currentPhoneSlider === phoneSlider.length - 1 ? 0 : currentPhoneSlider + 1;
 			currentPostSlider = currentPostSlider === posts.length - 1 ? 0 : currentPostSlider + 1;
-
-			console.log(currentPostSlider);
 		}, 1000);
+		horizontalScroll = new HorizontalScrollHandler(scrollContainer, 400);
+		postDragScroll = new DragScrollHandler(postScrollContainer);
+		posterDragScroll = new DragScrollHandler(scrollContainer);
 	});
 
 	const setNavbarMode = (mode: string) => {
@@ -62,10 +70,10 @@
 </script>
 
 <div class="overflow-hidden">
-	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
+	<div bind:this={scrollContainer} class="flex overflow-x-scroll overflow-y-hidden h-screen" on:mousewheel={horizontalScroll.handleScroll}>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent  overflow-y-hidden"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-cover w-full h-full" src={sneakersDept1} alt="sneakers dept bg" />
@@ -81,11 +89,11 @@
 			number="001" 
 			workDate="2021 - present<br/>graphic designer"
 			workRole="digital imaging<br/>social media design"
-			containerClass="bg-thejak"
+			containerClass="bg-thejak  overflow-y-hidden"
 			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-[#d9d9d9]"
+			class="relative flex-shrink-0 w-screen h-screen bg-[#d9d9d9]  overflow-y-hidden"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<div class="flex flex-col h-full justify-center pt-[6vh] px-[5vw] pb-16">
@@ -110,7 +118,7 @@
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="flex-shrink-0 snap-start w-screen h-screen bg-[#202020]"
+			class="flex-shrink-0 w-screen h-screen bg-[#202020]  overflow-y-hidden"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<div class="w-full h-full px-16 pt-20 grid grid-cols-10">
@@ -139,9 +147,16 @@
 					<div
 						class="absolute left-0 w-full h-40 bottom-20 bg-gradient-to-t from-[#202020] to-transparent"
 					></div>
-					<div class="w-full h-full grid grid-cols-2 gap-4 overflow-y-auto">
+					<div class="w-full h-full grid grid-cols-2 gap-4 overflow-y-scroll" bind:this={postScrollContainer} on:mousedown={postDragScroll.dragMouseDown} on:mouseup={postDragScroll.dragMouseUp} on:mousemove={postDragScroll.dragMouseScroll} on:mousewheel={(e) => e.preventDefault()}>
 						{#each postsRaw as post, i}
+							{#if i == 0}
 							<img class="object-cover aspect-square" src={post} alt="post ig raw {i}" />
+							{:else if i == postsRaw.length - 1}
+							<img class="object-cover aspect-square" src={post} alt="post ig raw {i}" />
+							{:else}
+							<img class="object-cover aspect-square" src={post} alt="post ig raw {i}" />
+							{/if}
+							
 						{/each}
 					</div>
 				</div>
@@ -149,7 +164,7 @@
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="flex-shrink-0 snap-end h-screen relative"
+			class="flex-shrink-0 h-screen relative  overflow-y-hidden"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<div
@@ -161,8 +176,8 @@
 					seller in tokopedia
 				</p>
 			</div>
-			<div class="h-screen overflow-x-auto">
-				<img class="h-full w-full" src={posterSneakersDept} alt="poster-sneakers-dept" />
+			<div id="posterScrollContainer" class="h-screen overflow-x-auto" on:mousedown={posterDragScroll.dragMouseDown} on:mouseup={posterDragScroll.dragMouseUp} on:mousemove={posterDragScroll.dragMouseScroll}>
+				<img class="h-full w-full" src={posterSneakersDept} alt="poster-sneakers-dept"/>
 			</div>
 		</div>
 	</div>

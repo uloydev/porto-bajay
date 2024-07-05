@@ -13,11 +13,15 @@
 	import tokopedia from '$lib/images/other/tokopedia.png';
 	import phoneTokopedia from '$lib/images/other/phone-tokopedia.png';
 	import SlideNumber from '$lib/components/SlideNumber.svelte';
+	import { HorizontalScrollHandler } from '$lib/utils/scroll';
 
 	let navbarMode: Writable<string> = getContext('navbarMode');
+	let scrollContainer: HTMLElement;
+	let horizontalScroll: HorizontalScrollHandler;
 
 	onMount(() => {
 		navbarMode.set('light');
+		horizontalScroll = new HorizontalScrollHandler(scrollContainer,400);
 	});
 
 	const setNavbarMode = (mode: string) => {
@@ -26,7 +30,7 @@
 </script>
 
 <div class="overflow-hidden">
-	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
+	<div bind:this={scrollContainer} class="flex overflow-x-scroll overflow-y-hidden h-screen" on:mousewheel={horizontalScroll.handleScroll}>
 		<SlideNumber 
 			navbar="light" 
 			number="005" 
@@ -36,28 +40,28 @@
 			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-cover w-full h-full" src={bg1} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-fill w-full h-full" src={bg2} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-cover w-full h-full" src={bg3} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-fill w-full h-full" src={bg4} alt="others bg" />
@@ -71,21 +75,21 @@
 			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<img class="object-fill w-full h-full" src={bg5} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-fill w-full h-full" src={bg6} alt="others bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-fill w-full h-full" src={bg7} alt="others bg" />
@@ -95,11 +99,11 @@
 			number="005" 
 			workDate="2022 - present<br/>talent"
 			workRole="talent"
-			containerClass="bg--hite"
+			containerClass="bg-white"
 			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-[#42B549]"
+			class="relative flex-shrink-0 w-screen h-screen bg-[#42B549]"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img
@@ -110,7 +114,7 @@
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-white"
+			class="relative flex-shrink-0 w-screen h-screen bg-white"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<img

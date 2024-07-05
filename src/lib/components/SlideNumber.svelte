@@ -22,7 +22,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="flex-shrink-0 snap-start w-screen h-screen {containerClass}"
+	class="flex-shrink-0 w-screen h-screen {containerClass}"
 	on:mouseenter={() => setNavbarMode(navbar)}
 >
 	<div class="flex flex-col h-full justify-between pt-[6vh] px-20 pb-16">

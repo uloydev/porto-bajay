@@ -12,10 +12,15 @@
 	import phone3 from '$lib/images/hopps-dept/phone3.png';
 	import posterFeeds from '$lib/images/hopps-dept/poster-feeds.png';
 	import SlideNumber from '$lib/components/SlideNumber.svelte';
+	import { DragScrollHandler, HorizontalScrollHandler } from '$lib/utils/scroll';
 
 	let navbarMode: Writable<string> = getContext('navbarMode');
 	let phoneScreens = [phone1, phone2, phone3];
 	let currentPhoneScreen = 0;
+	let scrollContainer: HTMLElement;
+	let horizontalScroll: HorizontalScrollHandler;
+	let postScrollContainer: HTMLElement;
+	let postDragScroll: DragScrollHandler;
 
 	onMount(() => {
 		navbarMode.set('light');
@@ -23,6 +28,8 @@
 			currentPhoneScreen =
 				currentPhoneScreen === phoneScreens.length - 1 ? 0 : currentPhoneScreen + 1;
 		}, 1000);
+		horizontalScroll = new HorizontalScrollHandler(scrollContainer, 400);
+		postDragScroll = new DragScrollHandler(postScrollContainer);
 	});
 
 	const setNavbarMode = (mode: string) => {
@@ -31,10 +38,10 @@
 </script>
 
 <div class="overflow-hidden">
-	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
+	<div class="flex overflow-x-scroll overflow-y-hidden h-screen" bind:this={scrollContainer} on:mousewheel={horizontalScroll.handleScroll}>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-cover w-full h-full" src={bgHoppsDept} alt="hopps dept bg" />
@@ -54,7 +61,7 @@
 			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img
@@ -68,7 +75,7 @@
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start h-screen max-w-[100vw] bg-transparent"
+			class="relative flex-shrink-0 h-screen max-w-[100vw] bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<p class="absolute right-0 top-1/2 -translate-y-1/2 leading-none text-[2vw] rotate-90">
@@ -81,7 +88,13 @@
 				alt="hopps dept bg 2"
 			/>
 			<div class="grid-cols-9 grid gap-2 h-full py-16 relative pl-20">
-				<div class="col-start-1 col-span-6 h-full pt-[2.5vh] overflow-x-scroll">
+				<div 
+					class="col-start-1 col-span-6 h-full pt-[2.5vh] overflow-x-scroll"
+					bind:this={postScrollContainer}
+					on:mousedown={postDragScroll.dragMouseDown}
+					on:mouseup={postDragScroll.dragMouseUp}
+					on:mousemove={postDragScroll.dragMouseScroll}
+				>
 					<div class="h-full w-screen">
 						<img src={posterFeeds} alt="hoops dept post feeds" class=" object-cover w-full" />
 					</div>

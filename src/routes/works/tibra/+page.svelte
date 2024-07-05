@@ -12,31 +12,41 @@
     import phone3 from '$lib/images/tibra/phone-3.png';
     import phone4 from '$lib/images/tibra/phone-4.png';
 	import SlideNumber from '$lib/components/SlideNumber.svelte';
+	import { DragScrollHandler, HorizontalScrollHandler } from '$lib/utils/scroll';
 
     let phoneScreens = [phone1, phone2, phone3, phone4];
     let currentPhoneScreen = 0;
 
 	let navbarMode: Writable<string> = getContext('navbarMode');
+	let scrollContainer: HTMLElement;
+	let horizontalScroll: HorizontalScrollHandler;
+	let dragScrollContainer: HTMLElement;
+	let dragScroll: DragScrollHandler;
+	
 
 	onMount(() => {
 		navbarMode.set('light');
         setInterval(() => {
             currentPhoneScreen = currentPhoneScreen === phoneScreens.length - 1 ? 0 : currentPhoneScreen + 1;
         }, 1000);
+		horizontalScroll = new HorizontalScrollHandler(scrollContainer, 400);
+		dragScroll = new DragScrollHandler(dragScrollContainer);
 	});
 
 	const setNavbarMode = (mode: string) => {
 		navbarMode.set(mode);
 	};
+
+
 </script>
 
 <div class="overflow-hidden">
 	<div
-		class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory"
+		class="flex overflow-x-scroll overflow-y-hidden h-screen" bind:this={scrollContainer} on:mousewheel={horizontalScroll.handleScroll}
 	>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-[#000aff]"
+			class="relative flex-shrink-0 w-screen h-screen bg-[#000aff]"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img
@@ -55,14 +65,14 @@
 		
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
         <div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<img class="object-cover w-full h-full" src={posts} alt="tibra bg" />
 		</div>
         <!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-        class="relative flex-shrink-0 snap-start h-screen max-w-[100vw] bg-transparent"
+        class="relative flex-shrink-0 h-screen max-w-[100vw] bg-transparent"
         on:mouseenter={() => setNavbarMode('light')}
     >
         <img
@@ -71,7 +81,7 @@
             alt="hopps dept bg 2"
         />
         <div class="h-full pt-[5vh] relative">
-            <div class="h-full pt-[5vh] overflow-x-scroll">
+            <div class="h-full pt-[5vh] overflow-x-scroll" bind:this={dragScrollContainer} on:mousedown={dragScroll.dragMouseDown} on:mouseup={dragScroll.dragMouseUp} on:mousemove={dragScroll.dragMouseScroll}>
                 <div class="h-full w-[140vw]">
                     <img src={longPosts} alt="tibra post feeds" class=" object-cover h-full" />
                 </div>

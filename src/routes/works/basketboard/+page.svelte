@@ -14,11 +14,16 @@
 	import phone2 from '$lib/images/basketboard/phone-2.png';
 	import phone3 from '$lib/images/basketboard/phone-3.png';
 	import phone4 from '$lib/images/basketboard/phone-4.png';
-	// import phone5 from '$lib/images/basketboard/phone-5.png';
 	import SlideNumber from '$lib/components/SlideNumber.svelte';
+	import { DragScrollHandler, HorizontalScrollHandler } from '$lib/utils/scroll';
+
 
 	let phoneScreens = [phone1, phone2, phone3, phone4];
 	let currentPhoneScreen = 0;
+	let scrollContainer: HTMLElement;
+	let horizontalScroll: HorizontalScrollHandler;
+	let postScrollContainer: HTMLElement;
+	let postDragScroll: DragScrollHandler;
 
 	let navbarMode: Writable<string> = getContext('navbarMode');
 
@@ -28,6 +33,8 @@
 			currentPhoneScreen =
 				currentPhoneScreen === phoneScreens.length - 1 ? 0 : currentPhoneScreen + 1;
 		}, 1000);
+		horizontalScroll = new HorizontalScrollHandler(scrollContainer, 400);
+		postDragScroll = new DragScrollHandler(postScrollContainer);
 	});
 
 	const setNavbarMode = (mode: string) => {
@@ -36,10 +43,10 @@
 </script>
 
 <div class="overflow-hidden">
-	<div class="flex overflow-x-scroll overflow-y-hidden h-screen snap-x snap-mandatory">
+	<div class="flex overflow-x-scroll overflow-y-hidden h-screen" bind:this={scrollContainer} on:mousewheel={horizontalScroll.handleScroll}>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<img class="object-cover w-full h-full" src={bg1} alt="basketboard bg" />
@@ -53,14 +60,14 @@
 			/>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-fill w-full h-full" src={bg2} alt="basketboard bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start h-screen max-w-[100vw] bg-transparent"
+			class="relative flex-shrink-0 h-screen max-w-[100vw] bg-transparent"
 			on:mouseenter={() => setNavbarMode('dark')}
 		>
 			<img class=" absolute object-cover w-full h-full -z-10" src={bg3} alt="basketboard bg 2" />
@@ -75,7 +82,13 @@
 						/>
 					{/each}
 				</div>
-				<div class="col-span-6 h-full overflow-x-scroll">
+				<div 
+					class="col-span-6 h-full overflow-x-scroll"
+					bind:this={postScrollContainer}
+					on:mousedown={postDragScroll.dragMouseDown}
+					on:mouseup={postDragScroll.dragMouseUp}
+					on:mousemove={postDragScroll.dragMouseScroll}
+				>
 					<div class="h-full w-[100vw]">
 						<img src={longPosts} alt="hoops dept post feeds" class=" object-cover h-[90%]" />
 					</div>
@@ -84,14 +97,14 @@
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-cover w-full h-full" src={bg4} alt="basketboard bg" />
 		</div>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="relative flex-shrink-0 snap-start w-screen h-screen bg-transparent"
+			class="relative flex-shrink-0 w-screen h-screen bg-transparent"
 			on:mouseenter={() => setNavbarMode('light')}
 		>
 			<img class="object-cover w-full h-full" src={bg5} alt="basketboard bg" />
